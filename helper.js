@@ -23,6 +23,25 @@ function generateExampleRow(table_row, base_dir, dirs, filename, col_offset) {
   }
 }
 
+function generateMOSRow(table_row, base_dir, filenames, col_offset) {
+  for (var i = 0; i < filenames.length; i++) {
+    let cell = table_row.cells[col_offset + i];
+    let p = base_dir + '/' + filenames[i];
+      if (p.endsWith('txt')) {
+        var req = new XMLHttpRequest();
+        req.onreadystatechange = function() {
+          if (this.readyState === this.DONE) {
+            cell.innerHTML = '<font size="-1">' + req.responseText + '</font>';
+          }
+        };
+        req.open('GET', p);
+        req.send(null);
+      } else {
+        cell.innerHTML = cell.innerHTML + createAudioHTML(p);
+      }
+  }
+}
+
 
 function generateLongForm(tableId) {
   let table = document.getElementById(tableId);
@@ -40,4 +59,22 @@ function generateLongForm(tableId) {
   }
 }
 
+function generateMOS(tableId, dirs) {
+  let table = document.getElementById(tableId);
+  let base_dir = 'data'
+  let filenames = [
+    "voice_sample.mp3",
+    "dsm.mp3",
+    "dia.mp3",
+    "eleven_v2.mp3",
+    "eleven_flash.mp3",
+  ];
+
+  for (var i = 0; i < dirs.length; i++) {
+    generateMOSRow(table.rows[1 + i], base_dir + '/' + dirs[i], filenames, 0);
+  }
+}
+
 generateLongForm('long-form-table');
+generateMOS('dialogue-table', ["dialogs_en", "dialogs_fr"]);
+generateMOS('short-form-table', ["short_form_en", "short_form_fr"]);
