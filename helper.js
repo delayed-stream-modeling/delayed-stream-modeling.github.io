@@ -30,7 +30,9 @@ function generateLongForm(tableId) {
   let dirs = ['source', 'generated'];
   let filenames = [
     "malala_yousafzai.mp3",
-    "edward_viii_abdication.mp3"
+    "edward_viii_abdication.mp3",
+    "degaulle_bayeux.mp3",
+    "simone_veil_1974.mp3"
   ];
 
   for (var i = 0; i < filenames.length; i++) {
