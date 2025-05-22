@@ -77,4 +77,11 @@ function generateMOS(tableId, dirs) {
 
 generateLongForm('long-form-table');
 generateMOS('dialogue-table', ["dialogs_en", "dialogs_fr"]);
-generateMOS('short-form-table', ["short_form_en", "short_form_fr"]);
+generateMOS('short-form-table', [
+    "short_form_en/abcnews.306755",
+    "short_form_en/cnbc.com.6772",
+    "short_form_en/scotsman.133753",
+    "short_form_fr/dailymail.co.uk.298630",
+    "short_form_fr/rt.com.91350",
+    "short_form_fr/scotsman.133753",
+]);
